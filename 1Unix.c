@@ -1,6 +1,7 @@
 #include "shell.h"
 
 #define BUFFER_SIZE 1024
+#define MAX_ARGS 10
 
 /**
  * main - UNIX command line interpreter
@@ -26,10 +27,12 @@ xters = getline(&buf, &bufsize, stdin);
 		if (xters > 1)
 		{
 			buf[xters - 1] = '\0';
-			argv[0] = buf;
+		
 			argv[1] = NULL;
 
-			pid_t pid = fork()
+			pid_t pid;
+			
+			 pid = fork();
 				if (pid == -1)
 				{
 					perror("fork");
@@ -44,7 +47,7 @@ xters = getline(&buf, &bufsize, stdin);
 				}
 				else
 				{
-					wait(NULL);
+					waitpid(pid, NULL, 0);
 				}
 			}
 		}
