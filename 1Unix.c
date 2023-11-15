@@ -28,11 +28,11 @@ xters = getline(&buf, &bufsize, stdin);
 		{
 			buf[xters - 1] = '\0';
 		
-			argv[1] = NULL;
-
-			pid_t pid;
 			
-			 pid = fork();
+
+		int pid;
+			
+	pid = fork();
 				if (pid == -1)
 				{
 					perror("fork");
